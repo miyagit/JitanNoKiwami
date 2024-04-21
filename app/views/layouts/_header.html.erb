@@ -3,24 +3,31 @@
     <div class="w-100 d-flex justify-content-between align-items-center">
       <div>
         <%= link_to root_path, data: { turbolinks: false } do %>
-          <%= image_tag "logo.png", class: "img-fluid", width: "180px" %>
+          <%= image_tag "logo.png", class: "img-fluid", width: "180px", alt: "ロゴ画像" %>
         <% end %>
       </div>
 
       <div class="d-flex justify-content-end align-items-center header__right-content">
-          <%= image_tag "user_icon.png", class: "rounded-circle me-3", width: "50px", alt: "" %>
-
-          <p class="header__user-name d-md-block d-none fs-6 pe-2 mt-3">ユーザー名</p>
-          <div class="dropdown">
-            <a class="dropdown-toggle text-purple" data-bs-toggle="dropdown" href="#"></a>
-            <div class="dropdown-menu dropdown-menu-end shadow text-center" style="padding: 4px 0px;">
-              <%= link_to "アカウント編集", "#", class: "dropdown-item text-secondary border-bottom py-2", data: { turbolinks: false } %>
-              <%= link_to "ログアウト", "#", class: "dropdown-item text-secondary py-2", method: :delete %>
+        <% if user_signed_in? %>
+          <div class="user-menu d-flex align-items-center">
+            <%= image_tag "user_icon.png", class: "rounded-circle me-3", width: "50px", alt: "" %>
+            
+            <p class="header__user-name d-md-block d-none fs-6 pe-2">ユーザー名</p>
+            <div class="dropdown">
+              <a class="dropdown-toggle text-purple" data-bs-toggle="dropdown" href="#"></a>
+              <div class="dropdown-menu dropdown-menu-end shadow text-center" style="padding: 4px 0px;">
+                <%= link_to "アカウント編集", "#", class: "dropdown-item text-secondary border-bottom py-2", data: { turbolinks: false } %>
+                <%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item text-secondary py-2", method: :delete %>
+              </div>
             </div>
           </div>
+        <% else %>
+          <div class="devise-menu d-flex align-items-center">
+            <%= link_to "ログイン", new_user_session_path, class: "link-success link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover mx-2", data: { turbolinks: false } %>
+            <%= link_to "無料会員登録", new_user_registration_path, class: "btn btn-success mx-2", data: { turbolinks: false } %>
+          </div>
+        <% end %>
         
-          <!--<%= link_to "ログイン", "#", class: "btn text-purple me-3", data: { turbolinks: false } %>-->
-          <!--<%= link_to "無料会員登録", "#", class: "btn btn-purple me-5 px-3 py-2", data: { turbolinks: false } %>-->
       </div>
     </div>
   </div>
