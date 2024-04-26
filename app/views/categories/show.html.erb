@@ -1,0 +1,25 @@
+<div class="container main__categories-show">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="d-flex flex-column">
+          <h2>問題詳細</h2>
+          
+          <div class="mt-4 main__categories-show--variable">
+            <p>カテゴリー：<% =@category.name %></p>
+            <p><% =@category.description %></p>
+          </div>
+          
+          <div class="mt-5 main__categories-show--explanation">
+            <p>説明：</p>
+            <ul>
+              <li>・全20問です。</li>
+              <li>・制限時間はありません。</li>
+              <li>・問題の選択肢は毎回ランダムに出題されます。</li>
+              <li>・完了後はご自身の回答結果をご確認いただけます。</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-success mt-4">問題を開始する</button>
+      </div>
+    </div>
+  </div>
+</div>

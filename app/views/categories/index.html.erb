@@ -34,24 +34,11 @@
           対応OS・アプリケーションごとの問題
         </h5>
         <div class="row main__top--category-menus">
-          <div class="col-md-6">
-            <p>Windows</p>
-          </div>
-          <div class="col-md-6">
-            <p>MacOS</p>
-          </div>
-          <div class="col-md-6">
-            <p>Excel</p>
-          </div>
-          <div class="col-md-6">
-            <p>Word</p>
-          </div>
-          <div class="col-md-6">
-            <p>PowerPoint</p>
-          </div>
-          <div class="col-md-6">
-            <p>VSCode</p>
-          </div>
+          <% @categories.each do |category| %>
+            <div class="col-md-6">
+              <p><%= link_to category.name, category_path(category) %></p>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
