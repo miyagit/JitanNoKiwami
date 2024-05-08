@@ -1,0 +1,23 @@
+<%= form_with(model: @user_answer || UserAnswer.new, local: true) do |f| %>
+
+  <% @questions_with_choices.each_with_index do |question_data, question_number| %>
+    <div class="main__quiz--question">
+      <p>問題<%= question_number + 1 %>：<%= question_data[:question].content %></p>
+      <ul>
+        <%= f.collection_radio_buttons :category_question_choice_id, question_data[:choices].map { |choice| [choice.id, choice.content] }, :first, :last do |b| %>
+          <div class="main__quiz--radio">
+            <li>
+              <%= b.radio_button %>
+              <%= b.label %>
+            </li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="main__quiz--submit">
+    <%= f.submit "回答を送信する", class: "btn btn-success mt-4" %>
+  </div>
+  
+<% end %>

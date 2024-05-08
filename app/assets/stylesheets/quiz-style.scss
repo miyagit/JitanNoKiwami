@@ -1,0 +1,20 @@
+.main__quiz {
+  &--question {
+    margin-top: 20px;
+    p {
+      margin-left: 50px;
+    }
+  }
+  &--radio {
+    li {
+      padding: 5px;
+      margin-left: 70px;
+    }
+     input[type="radio"] {
+       -webkit-appearance: auto; /* -webkit-appearance: none;だと、ラジオボタンが表示されないため、部分的にautoに変更 */
+     }
+  }
+  &--submit {
+    margin-left: 50px;
+  }
+}
